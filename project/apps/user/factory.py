@@ -7,7 +7,6 @@ FAKER = factory.Faker("paragraph")
 
 class UserFactory(factory.django.DjangoModelFactory):
     
-    avatar = factory.django.ImageField(color='red')
     username = factory.Sequence(lambda x : f"sluggy-{x}-{''.join(random.choices(ascii_letters, k=5))}")
     first_name = factory.Sequence(lambda n: "Agent %03d" % n)
     last_name = factory.Sequence(lambda n: "Agent %03d" % n)

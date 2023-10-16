@@ -12,14 +12,14 @@ class CustomerDisplaySerializer(serializers.ModelSerializer):
 class UserUpdateSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ('id', 'first_name', 'last_name', 'avatar')        
+        fields = ('id', 'first_name', 'last_name')        
 
 
 class UserLoggedInSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ('id', 'first_name', 'last_name', 'username', 'email', 'avatar')
+        fields = ('id', 'first_name', 'last_name', 'username', 'email')
         
 
 class UserListSerializer(UserLoggedInSerializer):
