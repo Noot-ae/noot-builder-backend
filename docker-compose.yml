@@ -10,12 +10,12 @@ services:
     build: .
     depends_on:
       - redis
-    command: bash -c "python manage.py migrate && python manage.py create_host_schema --host ${host} && daphne -b 0.0.0.0 -p 8000 project.asgi:application"
+    command: bash -c "python manage.py migrate && python manage.py create_host_schema --host ${host} && python manage.py runserver 0.0.0.0:7999"
     volumes:
       - .:/code
       - ./logs:/logs
     ports:
-      - 7999:8000
+      - 7999:7999
   redis:
     image: redis:7.0.5-alpine 
     ports:
