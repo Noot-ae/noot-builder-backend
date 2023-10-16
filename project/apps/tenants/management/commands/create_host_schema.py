@@ -5,9 +5,6 @@ from decouple import config
 import logging
 
 tenant_data = {
-        "currency_name": "dollars",
-        "currency_code": "USD",
-        "currency_symbol": "$",
         "username": "admin"
 }
 
@@ -46,4 +43,4 @@ class Command(BaseCommand):
         try:                    
             User.objects.create_superuser(user_data.pop('username'), **user_data)
         except Exception as e:
-            logging.debug(e)            
+            logging.debug(e)
