@@ -34,25 +34,6 @@ services:
     image: redis:7.0.5-alpine 
     ports:
       - 6379:6379
-  nginx:
-    networks:
-      my_network:
-        ipv4_address: 172.16.238.3
-    image: pagespeed/nginx-pagespeed:latest
-    ports:
-      - 5000:80
-    volumes:
-      - ./nginx:/etc/nginx/conf.d
-      - ./nginx/logs:/var/log/nginx/
-      - ./static:/opt/services/web/static  # <-- bind the static volume
-      - ./media:/opt/services/web/media  # <-- bind the media volume
-    depends_on:
-      - web
-  stripe:
-    env_file:
-      - .env
-    image: stripe/stripe-cli
-    command: listen --forward-to 172.16.238.2:8000/payment/stripe_hook/ --api-key ${STRIPE_SECRET_KEY}
   celery:
     extra_hosts:
       - "host.docker.internal:host-gateway"
