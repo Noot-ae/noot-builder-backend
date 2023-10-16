@@ -19,7 +19,7 @@ services:
   redis:
     image: redis:7.0.5-alpine 
     ports:
-      - 6379:6379
+      - 6380:6379
   celery:
     extra_hosts:
       - "host.docker.internal:host-gateway"
