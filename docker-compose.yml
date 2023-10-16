@@ -1,20 +1,9 @@
 version: "3.9"
 
-networks:
-  my_network:
-    driver: bridge
-    ipam:
-      config:
-        - subnet: 172.16.238.0/24
-          gateway: 172.16.238.1
-
 services:
   web:
     extra_hosts:
       - "host.docker.internal:host-gateway"
-    networks:
-      my_network:
-        ipv4_address: 172.16.238.2
     restart: always
     env_file:
       - .env
@@ -28,18 +17,12 @@ services:
     ports:
       - 8000:8000
   redis:
-    networks:
-      my_network:
-        ipv4_address: 172.16.238.4
     image: redis:7.0.5-alpine 
     ports:
       - 6379:6379
   celery:
     extra_hosts:
       - "host.docker.internal:host-gateway"
-    networks:
-      my_network:
-        ipv4_address: 172.16.238.6
     restart: always
     env_file:
       - .env
