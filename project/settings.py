@@ -54,6 +54,12 @@ THIRD_PARTY_APPS = (
     'corsheaders',
 )
 
+CSRF_TRUSTED_ORIGINS = ['https://*.noot.ae', 'https://*.apexcode.info']
+
+if DEBUG:
+    CSRF_TRUSTED_ORIGINS += ['http://localhost:5000', 'http://127.0.0.1:5000', 'https://*.ngrok-free.app']
+
+
 APPS = (
 
 ) + PROJECT_APPS
