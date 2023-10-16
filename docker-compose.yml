@@ -15,7 +15,7 @@ services:
       - .:/code
       - ./logs:/logs
     ports:
-      - 8000:8000
+      - 8001:8000
   redis:
     image: redis:7.0.5-alpine 
     ports:
